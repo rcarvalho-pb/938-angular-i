@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppData } from './models/app-data.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'site';
 
-  public data = {
+  public data: AppData = {
     features: {
       sectionTitle: 'Destaques',
       features: [
@@ -46,7 +47,7 @@ export class AppComponent {
       sectionTitle: 'Endereço',
       data: {
         street: 'Rua Luiz Galvez',
-        number: 254,
+        // number: 254,
         complement: '3º andar, sala 306',
         state: 'AC',
         city: 'Rio Branco',
