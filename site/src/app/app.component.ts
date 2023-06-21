@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppData } from './models/app-data.model';
+import { ContactPayload } from './models/contact-payload.model';
 
 @Component({
   selector: 'app-root',
@@ -58,4 +59,8 @@ export class AppComponent {
       },
     },
   };
+
+  public handleFormData(event: ContactPayload) {
+    console.log('Evento recebido pelo componente pai:', event);
+  }
 }

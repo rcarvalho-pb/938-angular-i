@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ContactPayload } from 'src/app/models/contact-payload.model';
 
 @Component({
   selector: 'app-contact',
@@ -6,13 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  public email!: string;
+  @Output() public sendFormData = new EventEmitter<ContactPayload>();
+
+  public contactPayload!: ContactPayload;
 
   ngOnInit(): void {
-    this.email = 'ivirson_d@email.com';
+    this.contactPayload = {
+      email: '',
+      message: '',
+    };
   }
 
   public submitForm(): void {
-    console.log(this.email);
+    console.log(
+      'Dado a ser enviado para o componente pai:',
+      this.contactPayload
+    );
+    if (this.contactPayload.email && this.contactPayload.message) {
+      this.sendFormData.emit(this.contactPayload);
+    }
+  }
+
+  public isFormValid(): boolean {
+    return !!this.contactPayload.email && !!this.contactPayload.message;
+    // if (this.contactPayload.email && this.contactPayload.message) {
+    //   return true;
+    // }
+
+    // return false;
   }
 }
