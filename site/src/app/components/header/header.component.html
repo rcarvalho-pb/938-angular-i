@@ -1,4 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav
+  class="navbar navbar-expand-lg"
+  [ngClass]="{
+    'navbar-dark bg-dark': userIsAuthenticated,
+    'navbar-light bg-light': !userIsAuthenticated
+  }"
+>
+  <!-- <nav
+  class="navbar navbar-expand-lg"
+  [ngStyle]="{ 'background-color': userIsAuthenticated ? 'red' : 'black' }"
+> -->
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="./../assets/images/logo_wt.png" alt="" />
@@ -38,6 +48,17 @@
         />
         <a class="btn btn-outline-light" href="#">Search</a>
       </form>
+      <!-- <button class="btn btn-primary ms-2" (click)="auth()">
+        {{ userIsAuthenticated ? "Sair" : "Entrar" }}
+      </button> -->
+      <!-- <button class="btn btn-primary ms-2" (click)="auth()">
+        <span *ngIf="userIsAuthenticated">Sair</span>
+        <span *ngIf="!userIsAuthenticated">Entrar</span>
+      </button> -->
+      <button class="btn btn-primary ms-2" (click)="auth()">
+        <span *ngIf="userIsAuthenticated; else enter">Sair</span>
+        <ng-template #enter>Entrar</ng-template>
+      </button>
     </div>
   </div>
 </nav>

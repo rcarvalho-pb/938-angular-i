@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<app-header></app-header>
+<app-header (authEmitter)="auth($event)"></app-header>
 
 <!-- End Navbar -->
 
@@ -19,7 +19,10 @@
 
   <!-- About -->
   <section id="about" class="my-5">
-    <app-about [aboutData]="data.about"></app-about>
+    <app-about [aboutData]="data.about">
+      <p [innerHTML]="data.about.text"></p>
+      <button class="btn btn-block btn-danger">Algum texto</button>
+    </app-about>
   </section>
   <!-- End About -->
 

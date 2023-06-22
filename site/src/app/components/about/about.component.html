@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="text-center mb-4">{{ aboutData.sectionTitle }}</h1>
-  <p>{{ aboutData.text }}</p>
+  <!-- <p [innerHTML]="aboutData.text"></p> -->
+  <ng-content></ng-content>
   <p>Aqui, um parágrafo fixo.</p>
 </div>
