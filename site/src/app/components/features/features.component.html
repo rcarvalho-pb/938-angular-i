@@ -1,38 +1,15 @@
 <div class="container">
-  <h1 class="text-center mb-4">{{ featuresData.sectionTitle }}</h1>
+  <h1 class="text-center mb-4" appHighlight>{{ featuresData.sectionTitle }}</h1>
   <div class="row">
-    <div class="col features text-center">
+    <div
+      class="col features text-center"
+      *ngFor="let feature of featuresData.features; index as i"
+    >
       <app-feature-item
-        [image]="featuresData.features[0].image"
-        [title]="featuresData.features[0].title"
-        [text]="featuresData.features[0].text"
-      ></app-feature-item>
-    </div>
-    <div class="col features text-center">
-      <app-feature-item
-        [image]="'./../assets/images/feature2.png'"
-        [title]="'Destaque 2'"
-        [text]="
-          'Aenean laoreet, felis id sollicitudin fringilla, leo orci iaculis eros, et volutpat nunc lacus ut sapien.'
-        "
-      ></app-feature-item>
-    </div>
-    <div class="col features text-center">
-      <app-feature-item
-        [image]="'./../assets/images/feature3.png'"
-        [title]="'Destaque 3'"
-        [text]="
-          'Aenean non eros congue leo consectetur fermentum. Quisque ut dignissim tortor, eget porttitor magna.'
-        "
-      ></app-feature-item>
-    </div>
-    <div class="col features text-center">
-      <app-feature-item
-        [image]="'./../assets/images/feature4.png'"
-        [title]="'Destaque 4'"
-        [text]="
-          'Duis id odio dapibus, finibus tortor eget, cursus nunc. Morbi egestas nisl orci, in cursus ipsum cursus et.'
-        "
+        [image]="feature.image"
+        [title]="feature.title"
+        [text]="feature.text"
+        [index]="i"
       ></app-feature-item>
     </div>
   </div>

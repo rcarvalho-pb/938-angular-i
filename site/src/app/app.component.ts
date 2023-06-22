@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppData } from './models/app-data.model';
 import { ContactPayload } from './models/contact-payload.model';
 
@@ -7,7 +7,7 @@ import { ContactPayload } from './models/contact-payload.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'site';
   public userIsAuthenticated: boolean = false;
 
@@ -17,25 +17,25 @@ export class AppComponent {
       features: [
         {
           image: './assets/images/feature1.png',
-          title: 'Destaque 1',
+          title: 'Destaque',
           text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dolor arcu, malesuada eget posuere et.',
           isActive: true,
         },
         {
           image: './assets/images/feature2.png',
-          title: 'Destaque 2',
+          title: 'Destaque',
           text: 'Aenean laoreet, felis id sollicitudin fringilla, leo orci iaculis eros, et volutpat nunc lacus ut sapien.',
           isActive: false,
         },
         {
           image: './assets/images/feature3.png',
-          title: 'Destaque 3',
+          title: 'Destaque',
           text: 'Aenean non eros congue leo consectetur fermentum. Quisque ut dignissim tortor, eget porttitor magna.',
           isActive: true,
         },
         {
           image: './assets/images/feature4.png',
-          title: 'Destaque 4',
+          title: 'Destaque',
           text: 'Duis id odio dapibus, finibus tortor eget, cursus nunc. Morbi egestas nisl orci, in cursus ipsum cursus et.',
           isActive: true,
         },
@@ -60,6 +60,21 @@ export class AppComponent {
       },
     },
   };
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.data.features.features[0].text =
+        'Teste teste teste Teste teste teste Teste teste teste Teste teste teste Teste teste teste Teste teste teste Teste teste teste Teste teste teste.';
+    }, 1000);
+    // setTimeout(() => {
+    //   this.data.features.features[0].text =
+    //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dolor arcu, malesuada eget posuere et.';
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   this.data.features.features = [];
+    // }, 2000);
+  }
 
   public handleFormData(event: ContactPayload) {
     console.log('Evento recebido pelo componente pai:', event);

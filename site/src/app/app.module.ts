@@ -11,6 +11,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FeatureItemComponent } from './components/features/components/feature-item/feature-item.component';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ContactComponent,
     FooterComponent,
     FeatureItemComponent,
+    HighlightDirective,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

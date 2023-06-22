@@ -39,7 +39,7 @@
           <a class="nav-link" href="#contact">Contato</a>
         </li>
       </ul>
-      <form class="d-flex">
+      <!-- <form class="d-flex">
         <input
           class="form-control me-2"
           type="search"
@@ -47,7 +47,18 @@
           aria-label="Search"
         />
         <a class="btn btn-outline-light" href="#">Search</a>
-      </form>
+      </form> -->
+      <ng-container>
+        <p>Seja bem vindo, fulano</p>
+        <p [ngSwitch]="userProfile">
+          <span *ngSwitchCase="profilesEnum.ADMIN">(Admin)</span>
+          <span *ngSwitchCase="profilesEnum.EDITOR">(Editor)</span>
+          <span *ngSwitchCase="profilesEnum.EMPLOYEE">(Employee)</span>
+          <span *ngSwitchCase="profilesEnum.USER">(User)</span>
+          <span *ngSwitchCase="profilesEnum.VIEWER">(Viewer)</span>
+          <span *ngSwitchDefault>(Visitante)</span>
+        </p>
+      </ng-container>
       <!-- <button class="btn btn-primary ms-2" (click)="auth()">
         {{ userIsAuthenticated ? "Sair" : "Entrar" }}
       </button> -->
