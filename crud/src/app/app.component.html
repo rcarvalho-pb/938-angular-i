@@ -1,1 +1,6 @@
-<app-login (loginEmitter)="handleLogin($event)"></app-login>
+<app-login *ngIf="!user" (loginEmitter)="handleLogin($event)"></app-login>
+
+<ng-container *ngIf="user">
+  <app-header></app-header>
+  <app-users></app-users>
+</ng-container>

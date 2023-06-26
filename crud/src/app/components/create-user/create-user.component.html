@@ -1,0 +1,119 @@
+<h1 mat-dialog-title>Novo usuário</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm">
+    <fieldset>
+      <legend>Dados pessoais</legend>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" />
+            <mat-hint>Igual ao documento de identificação.</mat-hint>
+            <mat-error>O campo nome é obrigatório.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Profissão</mat-label>
+            <input matInput formControlName="profession" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput formControlName="birthDate" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="documentNumber" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-hint>Ex: email@email.com</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="password" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="phone" />
+          </mat-form-field>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset formGroupName="address">
+      <legend>Endereço</legend>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="zipCode" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input matInput formControlName="street" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="number" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Complemento</mat-label>
+            <input matInput formControlName="complement" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="neighborhood" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="state" />
+          </mat-form-field>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button (click)="onCancel()">Cancelar</button>
+  <button
+    mat-flat-button
+    (click)="onSubmit()"
+    [disabled]="userForm.invalid"
+    color="primary"
+    cdkFocusInitial
+  >
+    Salvar
+  </button>
+</div>

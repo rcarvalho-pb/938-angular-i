@@ -10,8 +10,38 @@ export class AppComponent implements OnInit {
   public user?: User;
   public users!: User[];
 
+  // public createUser: User = {
+  //   name: 'Ivirson Daltro',
+  //   profession: 'Dev',
+  //   birthDate: '01/01/2000',
+  //   documentNumber: '01234567890',
+  //   email: 'ivirson@email.com',
+  //   password: '123',
+  //   phone: '5581959787152',
+  //   address: {
+  //     zipCode: '25874963',
+  //     street: 'Rua A',
+  //     number: 154,
+  //     complement: 'Casa de esquina',
+  //     neighborhood: 'Bairro B',
+  //     city: 'Cidade C',
+  //     state: 'PE',
+  //   },
+  // };
+
   ngOnInit(): void {
     this.users = JSON.parse(localStorage.getItem('USERS') || '[]');
+
+    const userAuthenticated = JSON.parse(
+      localStorage.getItem('USER') || 'null'
+    );
+
+    if (userAuthenticated) {
+      this.user = userAuthenticated;
+    }
+
+    // this.users.push(this.createUser);
+    // localStorage.setItem('USERS', JSON.stringify(this.users));
   }
 
   public handleLogin(user: Partial<User>): void {
@@ -22,6 +52,7 @@ export class AppComponent implements OnInit {
     if (userExist) {
       console.log('Usuário autenticado', userExist);
       this.user = userExist;
+      localStorage.setItem('USER', JSON.stringify(this.user));
     } else {
       console.log('Falha ao logar!');
     }
