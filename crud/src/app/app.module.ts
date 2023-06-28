@@ -15,6 +15,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { UsersComponent } from './components/users/users.component';
+import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { UsersComponent } from './components/users/users.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
     MatCardModule,
     MatButtonModule,
     MatInputModule,
