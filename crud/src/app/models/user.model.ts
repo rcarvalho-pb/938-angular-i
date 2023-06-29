@@ -5,7 +5,7 @@ export interface User {
   name: string;
   profession: string;
   birthDate: string;
-  documentNumber: string;
+  documentNumber?: string | null;
   email: string;
   password: string;
   phone: string;

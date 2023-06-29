@@ -10,24 +10,24 @@ export class AppComponent implements OnInit {
   public user?: User;
   public users!: User[];
 
-  // public createUser: User = {
-  //   name: 'Ivirson Daltro',
-  //   profession: 'Dev',
-  //   birthDate: '01/01/2000',
-  //   documentNumber: '01234567890',
-  //   email: 'ivirson@email.com',
-  //   password: '123',
-  //   phone: '5581959787152',
-  //   address: {
-  //     zipCode: '25874963',
-  //     street: 'Rua A',
-  //     number: 154,
-  //     complement: 'Casa de esquina',
-  //     neighborhood: 'Bairro B',
-  //     city: 'Cidade C',
-  //     state: 'PE',
-  //   },
-  // };
+  public createUser: User = {
+    name: 'Ivirson Daltro',
+    profession: 'Dev',
+    birthDate: '01/01/2000',
+    // documentNumber: null,
+    email: 'ivirson@email.com',
+    password: '123',
+    phone: '5581959787152',
+    address: {
+      zipCode: '25874963',
+      street: 'Rua A',
+      number: 154,
+      complement: 'Casa de esquina',
+      neighborhood: 'Bairro B',
+      city: 'Cidade C',
+      state: 'PE',
+    },
+  };
 
   ngOnInit(): void {
     this.users = JSON.parse(localStorage.getItem('USERS') || '[]');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { User } from 'src/app/models/user.model';
@@ -9,12 +9,15 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent {
+  @Input() public user?: User;
+
   constructor(private dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateUserComponent, {
       width: '80%',
       disableClose: true,
+      data: this.user,
     });
 
     dialogRef.afterClosed().subscribe((user: User) => {

@@ -48,7 +48,12 @@
         <div class="col-3">
           <mat-form-field appearance="outline">
             <mat-label>Telefone</mat-label>
-            <input matInput formControlName="phone" />
+            <input
+              matInput
+              formControlName="phone"
+              prefix="+55 "
+              [mask]="phoneMask"
+            />
           </mat-form-field>
         </div>
       </div>
@@ -60,7 +65,7 @@
         <div class="col-3">
           <mat-form-field appearance="outline">
             <mat-label>CEP</mat-label>
-            <input matInput formControlName="zipCode" />
+            <input matInput formControlName="zipCode" mask="00000-000" />
           </mat-form-field>
         </div>
         <div class="col-3">

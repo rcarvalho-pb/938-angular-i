@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormControlState,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/models/user.model';
 
 @Component({
@@ -17,11 +17,20 @@ export class CreateUserComponent implements OnInit {
   public user?: User;
   public userForm!: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<CreateUserComponent>) {}
+  public phoneMask = '(00) 0 0000-0000';
+
+  constructor(
+    public dialogRef: MatDialogRef<CreateUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: User
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
     this.birthDateSubscription();
+    this.getPhoneNUmberMask();
+    setTimeout(() => {
+      this.updateForm();
+    }, 3000);
   }
 
   public buildForm(): void {
@@ -38,11 +47,11 @@ export class CreateUserComponent implements OnInit {
         //   `/^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/`
         // ),
       ]),
-      documentNumber: new FormControl('0123457890', [
+      documentNumber: new FormControl('000000000000', [
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
-        this.documentValidator,
+        // this.documentValidator,
       ]),
       email: new FormControl(null, [
         Validators.required,
@@ -63,6 +72,14 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
+  private updateForm(): void {
+    // this.userForm.setValue(this.data);
+    this.userForm.patchValue(this.data);
+    setTimeout(() => {
+      this.userForm.controls['phone'].patchValue('99999999999');
+    }, 2000);
+  }
+
   public onCancel(): void {
     this.dialogRef.close();
   }
@@ -73,12 +90,19 @@ export class CreateUserComponent implements OnInit {
   }
 
   private birthDateSubscription() {
-    const form = this.userForm;
+    // const form = this.userForm;
     this.userForm.controls['birthDate'].valueChanges.subscribe({
       next(value) {
         // console.log(value);
         // console.log(form);
       },
+    });
+  }
+
+  private getPhoneNUmberMask(): void {
+    this.userForm.controls['phone'].valueChanges.subscribe((value) => {
+      this.phoneMask =
+        value.length === 10 ? '(00) 0000-00009' : '(00) 0 0000-0000';
     });
   }
 
