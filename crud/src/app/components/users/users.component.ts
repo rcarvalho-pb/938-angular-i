@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { User } from 'src/app/models/user.model';
@@ -8,10 +8,20 @@ import { User } from 'src/app/models/user.model';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   @Input() public user?: User;
 
+  public users!: User[];
+
   constructor(private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  public getUsers(): void {
+    this.users = JSON.parse(localStorage.getItem('USERS') || '[]');
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateUserComponent, {
@@ -21,9 +31,9 @@ export class UsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((user: User) => {
-      const users = JSON.parse(localStorage.getItem('USERS') || '[]');
-      users.push(user);
-      localStorage.setItem('USERS', JSON.stringify(users));
+      this.getUsers();
+      this.users.push(user);
+      localStorage.setItem('USERS', JSON.stringify(this.users));
     });
   }
 }

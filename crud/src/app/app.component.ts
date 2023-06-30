@@ -13,11 +13,12 @@ export class AppComponent implements OnInit {
   public createUser: User = {
     name: 'Ivirson Daltro',
     profession: 'Dev',
-    birthDate: '01/01/2000',
+    birthDate: '2011-10-05T14:48:00.000Z',
     // documentNumber: null,
     email: 'ivirson@email.com',
     password: '123',
     phone: '5581959787152',
+    income: 25000.85,
     address: {
       zipCode: '25874963',
       street: 'Rua A',
